@@ -1,16 +1,13 @@
 Map: 
 
 Easy: 
-
-![](https://github.com/Portal-Maze-using-A-/easy.gif)
+![](https://github.com/Portal-Maze-using-A-/raw/master/easy.gif)
 
 Medium: 
-
-![](https://github.com/Portal-Maze-using-A-/medium.gif)
+![](https://github.com/Portal-Maze-using-A-/raw/master/medium.gif)
 
 Hard: 
-
-![](https://github.com/Portal-Maze-using-A-/hard.gif)
+![](https://github.com/Portal-Maze-using-A-/raw/master/hard.gif)
 
 A maze-solving game built with Pygame that uses A* pathfinding algorithm. The game features manual and auto play modes with 3 difficulties.
 
