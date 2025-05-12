@@ -286,7 +286,6 @@ def build_portal_map(layers, tmx_data):
     # Tạo cặp từ các portal có cùng tile ID
     for positions in portals_by_gid.values():
         if len(positions) >= 2:
-            # Kết nối cặp 1-2, 3-4,... nếu có nhiều hơn 2
             for i in range(0, len(positions) - 1, 2):
                 a, b = positions[i], positions[i + 1]
                 portal_map[a] = b
@@ -333,7 +332,6 @@ def main():
     direction = "down"
     anim_frame = 0
     anim_counter = 0
-    start_time = pygame.time.get_ticks()
 
     # Load âm thanh
     portal_sound = pygame.mixer.Sound(os.path.join("sounds", "portal.wav"))
@@ -378,6 +376,7 @@ def main():
             print(f"Đường đi: {path}")
 
         path_index = 0
+        start_time = pygame.time.get_ticks()
         while running:
             clock.tick(5)
             WIN.fill(BLACK)
@@ -432,6 +431,7 @@ def main():
     # Chế độ MANUAL – điều khiển bằng phím
     else:
         last_teleport_from = None
+        start_time = pygame.time.get_ticks()
         while running:
             clock.tick(10)
             WIN.fill(BLACK)
