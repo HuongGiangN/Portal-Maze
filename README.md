@@ -1,8 +1,8 @@
-###BÁO CÁO TRÒ CHƠI PORTAL
+# BÁO CÁO TRÒ CHƠI PORTAL
 
-##MỞ ĐẦU
+## MỞ ĐẦU
 
-#1.	Phát biểu bài toán
+### 1.	Phát biểu bài toán
 
 Trò chơi Portal là một đồ án lập trình phát triển một ứng dụng game tìm đường (pathfinding) tích hợp cổng dịch chuyển sử dụng ngôn ngữ Python và thư viện Pygame, minh họa ứng dụng trí tuệ nhân tạo trong bài toán tìm đường ngắn nhất.
 
@@ -10,7 +10,7 @@ Bài toán đặt ra yêu cầu xây dựng một giao diện menu thân thiện
 
 Portal không chỉ tìm đường bằng thuật toán A*, ngoài thuật toán A* ra Portal còn sử dụng nhiều thuật toán hỗ trợ tìm đường khác như: IDA*, Greedy, BFS.
 
-#2.	Mục đích, yêu cầu cần thực hiện
+### 2.	Mục đích, yêu cầu cần thực hiện
 
 -	Mục đích cần thực hiện:
 
@@ -20,7 +20,7 @@ Mục đích của dự án là tạo ra một trò chơi trực quan, dễ sử
 
 Yêu cầu cụ thể bao gồm thiết kế menu với hiệu ứng tương tác, đảm bảo chọn độ khó, chế độ và chọn thuật toán tìm đường trước khi bắt đầu. Từng bản đồ sẽ hiện ra với từng độ khó tương thích khi bắt đầu chạy trò chơi. Trò chơi Portal đáp ứng được yêu những yêu cầu cơ bản nhất là tạo giao diện thân thiện với người dùng, dễ điều khiển trò chơi hơn, và cuối cùng là đáp ứng được yêu cầu quan trọng nhất là áp dụng từng nhóm thuật toán vào trong trò chơi Portal như các thuật toán tìm kiếm có thông tin.
 
-#3.	Phạm vi và đối tượng
+### 3.	Phạm vi và đối tượng
 
 -	Phạm vi:
 
@@ -30,9 +30,9 @@ Phạm vi dự án tập trung vào chạy trên máy tính với ngôn ngữ l�
 
 Đối tượng được hướng đến là sinh viên học về AI, lập trình game, những người theo hướng học lập trình AI hay lập trình game, hoặc những người chơi muốn trải nghiệm ứng dụng AI đơn giản. Dự án không những điều khiển được phím nhân vật trong trò chơi bằng phím các mũi tên, mà còn tích hợp thêm chế độ “auto” – AI tự chạy bằng cách tìm đường của từng thuật toán được áp dụng vào trong trò chơi. Từ đó giúp những đối tượng trên hiểu hơn về mục đích mà dự án mang tới.
 
-##PHÂN TÍCH VÀ THIẾT KẾ GIẢI PHÁP
+## PHÂN TÍCH VÀ THIẾT KẾ GIẢI PHÁP
 
-#1. Sơ đồ khối và ý tưởng thuật toán
+### 1. Sơ đồ khối và ý tưởng thuật toán
 
 1.1. Sơ đồ khối
  
@@ -42,15 +42,15 @@ Phạm vi dự án tập trung vào chạy trên máy tính với ngôn ngữ l�
 
 Thuật toán A* là một phương pháp tìm kiếm có thông tin (informed search) được sử dụng trong game Portal để tìm đường ngắn nhất từ điểm bắt đầu đến đích trong mê cung 2D, đồng thời xử lý các cổng dịch chuyển (portal) một cách hiệu quả. Cũng như A* là một trong những thuật toán nằm trong nhóm thuật toán tìm kiém có thông tin (informed search), thuật toán IDA*, Greedy cũng được áp dụng vào trong game Portal – tìm đường đi từ điểm bắt đầu đến điểm cuối là đích. Ngoài áp dụng các thuật toán có trong tìm kiếm có thông tin, thì nhóm chúng em còn sử dụng thêm thuật toán tìm kiếm không có thông tin là BFS - là một trong nhóm các thuật toán tìm kiếm không có thông tin, BFS dựa trên phương pháp ttimf đường “mù” - duyệt tất cả các đường đi để tìm đến đích đến cuối cùng.
 
-#2. Chi tiết về các thuật toán đã sử dụng
+### 2. Chi tiết về các thuật toán đã sử dụng
 
 Breadth First Search (BFS) chạy theo từng lớp bước, đảm bảo tìm ra con đường ít bước nhất, nhưng lại tiêu tốn rất nhiều bộ nhớ khi mê cung phức tạp. Ngược lại, Greedy Best First Search chỉ quan tâm đến khoảng cách ước lượng đến đích, nên di chuyển rất nhanh những dễ bị “sa lầy” vào đường cụt và không đảm bảo tối ưu về độ dài đường đi. A* là điểm cân bằng giữa hai phương pháp trên: nó kết hợp chi phí đã đi (g) và chi phí ước lượng còn lại (h) thành f = g + h, từ đó vừa giữ tốc độ lọc bỏ các nhánh vô ích, vừa đảm bảo tìm được đường ngắn nhất nếu heuristic hợp lệ. Nhược điểm duy nhất của A* là cần nhiều bộ nhớ để lưu hàng đợi các ô chờ xử lý. Để khắc phục hạn chế này, IDA* áp dụng chiến lược tìm kiếm theo chiều sâu với ngưỡng f tăng dần: mỗi lần chạy, thuật toán chỉ tiếp tục xuống sâu với những ô có f không vượt quá giới hạn, giúp tiết kiệm bộ nhớ đáng kể dù phải lặp lại nhiều lần. 
 
 Hàm heuristic h(n) sử dụng khoảng cách Manhattan (tổng chênh lệch tọa độ x và y) để ước lượng chi phí đến đích, đảm bảo tính tối ưu và hiệu quả. Đặc biệt, khi gặp ô portal , A* thực hiện nhảy tức thời đến ô portal liên kết, cho phép thuật toán xử lý các đường đi phi tuyến tính. Quá trình lặp tiếp tục cho đến khi đến đích, sau đó truy vết ngược để tạo danh sách các ô thuộc đường đi ngắn nhất. Thuật toán A* không chỉ đảm bảo tìm được đường đi tối ưu mà còn đủ linh hoạt để xử lý các mê cung phức tạp với portal, phù hợp với ba mức độ khó (Easy, Medium, Hard) của game.
 
-##THỰC NGHIỆM, ĐÁNH GIÁ VÀ PHÂN TÍCH KẾT QUẢ
+## THỰC NGHIỆM, ĐÁNH GIÁ VÀ PHÂN TÍCH KẾT QUẢ
 
-#1. giới thiệu giao diện, hướng dẫn thực thi phần mềm.
+### 1. giới thiệu giao diện, hướng dẫn thực thi phần mềm.
 
 Portal – là một dạng trò chơi thoát khỏi mê cung, nhưng trong Portal này còn có tính năng hỗ trợ giúp người chơi tìm đường nhanh hơn là cổng dịch chuyển, và mục tiêu cuối cùng của chúng ta là đích đến cuối cùng.
 
@@ -85,11 +85,11 @@ Portal – là một dạng trò chơi thoát khỏi mê cung, nhưng trong Port
 
  ![Win Menu](./WinMenu.png)
 
-#2.Kết quả thử nghiệm.
+### 2.Kết quả thử nghiệm.
 
   Chương trình đã đạt được mục tiêu cơ bản của một ứng dụng trò chơi cơ bản. Trò chơi cho phép người dùng thao tác trên bàn phím trong chế độ manual (nút mũi tên hướng lên, xuống, sang trái, phải) và cung cấp nhiều bản đồ khác nhau. Các tính năng như cho chạy auto hay người chơi điều khiển (manual) đều hoạt động tốt.
 
-#So sánh hiệu suất giữa các thuật toán
+### So sánh hiệu suất giữa các thuật toán
 
 Tại map easy:
 
