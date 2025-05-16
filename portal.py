@@ -17,7 +17,7 @@ WHITE = (255, 255, 255)
 # Khởi tạo màn hình
 pygame.init()
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption("A* Pathfinding with Portal")
+pygame.display.set_caption("Pathfinding with Portal")
 def show_start_screen():
     font = pygame.font.SysFont("Arial", 48)
     button_font = pygame.font.SysFont("Arial", 30)
